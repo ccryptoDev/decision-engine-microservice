@@ -1,0 +1,160 @@
+<div class="container mt-5">
+  <div class="card border border-primary">
+    <div class="card-header bg-primary">
+      <h5 class="card-title text-white">Product Rules</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+
+        <tbody>
+          <tr>
+            <th>Rule Description</th>
+            <th>Declined If</th>
+            <th>Disabled</th>
+          </tr>
+          <tr *ngFor="let d of LoadRules_value;">
+            <td class="text-primary" (click)="setLoadRules_value(d,template1)">
+              {{d.description}}
+            </td>
+            <td>{{d.declinedif}} {{d.value}}</td>
+            <td>{{d.disabled}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" (click)="openaddproductrulemodal(template)"> Add Product Rule
+        +</button>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #template>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-white">Add Product Rule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="ContactName">Choose Product Rule</label>
+            </div>
+            <select class="form-select" name="rule_id" [(ngModel)]="f1.rule_id">
+              <option *ngFor="let d of LoadRuleDescription_value;" value="{{d.id}}">{{d.description}}</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="ContactName">Declined If</label>
+            </div>
+            <select class="form-select" name="declinedif" [(ngModel)]="f1.declinedif">
+              <option value="Greater than">Greater Than</option>
+              <option value="Greater than equal to">Greater Than, Equal To</option>
+              <option value="Less than">Less Than</option>
+              <option value="Less than equal to">Less Than, Equal To</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <input type="text" name="value" class="form-control" [(ngModel)]="f1.value"
+                (input)="f1.value = number($event)" #value="ngModel" required
+                [ngClass]="{ 'is-invalid': f.submitted && value.invalid }">
+            </div>
+
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="ContactName">Disabled</label>
+            </div>
+            <select class="form-select" name="disabled" [(ngModel)]="f1.disabled">
+              <option value="t">True</option>
+              <option value="f">False</option>
+            </select>
+          </div>
+
+          <div class="col-6"></div>
+
+
+        </div>
+      </div>
+
+      <div class="modal-footer bg-info">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="close()">Close</button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #template1>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit1()" #f="ngForm" novalidate>
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-white">Edit Product Rule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="ContactName">{{f2.description}}</label>
+            </div>
+
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="ContactName">Declined If</label>
+            </div>
+            <select class="form-select" name="declinedif" [(ngModel)]="f2.declinedif">
+              <option value="Greater than">Greater Than</option>
+              <option value="Greater than equal to">Greater Than, Equal To</option>
+              <option value="Less than">Less Than</option>
+              <option value="Less than equal to">Less Than, Equal To</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <input type="text" name="value" class="form-control" [(ngModel)]="f2.value"
+                (input)="f2.value = number($event)" #value="ngModel" required
+                [ngClass]="{ 'is-invalid': f.submitted && value.invalid }">
+            </div>
+
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label for="ContactName">Disabled</label>
+            </div>
+            <select class="form-select" name="disabled" [(ngModel)]="f2.disabled">
+              <option value="t">True</option>
+              <option value="f">False</option>
+            </select>
+          </div>
+
+          <div class="col-6"></div>
+
+
+        </div>
+      </div>
+
+      <div class="modal-footer bg-info">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="close()">Close</button>
+      </div>
+    </div>
+  </form>
+</ng-template>

@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecisionEngine.Api", "TransUnion.Api\DecisionEngine.Api.csproj", "{AD5A85B8-54BE-43E1-B945-9791AEE16BD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecisionEngine.TunaService", "TransUnion.TunaService\DecisionEngine.TunaService.csproj", "{AF0E5CDE-D726-4753-9D61-D9E869F57B66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecisionEngine.Services", "TransUnion.Services\DecisionEngine.Services.csproj", "{7D6F5108-2080-4191-816E-FA1B497AE100}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{2ACC9A7A-2797-471C-BE9F-0CC26335846E}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+		..\..\transunion_POC\request.xml = ..\..\transunion_POC\request.xml
+		..\..\transunion_POC\response.xml = ..\..\transunion_POC\response.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cert", "Cert", "{947DD0B0-3B32-4746-9D92-9FC661EAEDFF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\transunion_POC\Certificate\KUBERFI3.pem = ..\..\transunion_POC\Certificate\KUBERFI3.pem
+		..\..\transunion_POC\Certificate\KUBERFI3Key.pem = ..\..\transunion_POC\Certificate\KUBERFI3Key.pem
+		Certificate\welcometech.pem = Certificate\welcometech.pem
+		Certificate\welcometechkey.pem = Certificate\welcometechkey.pem
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecisionEngine.DataService", "TransUnion.DataService\DecisionEngine.DataService.csproj", "{F3684FE6-90D3-4812-948B-99B85FD067B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionEngine.BAL", "DecisionEngine.BAL\DecisionEngine.BAL.csproj", "{02337E96-32C5-40B7-B0C3-972810D9C2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionEngine.DAL", "DecisionEngine.DAL\DecisionEngine.DAL.csproj", "{C2A0919B-B171-479A-ABC0-4FC42E8D83BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionEngine.Entities", "DecisionEngine.Entities\DecisionEngine.Entities.csproj", "{4EE5C29F-A284-4D37-A0B8-986AFFC56171}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD5A85B8-54BE-43E1-B945-9791AEE16BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD5A85B8-54BE-43E1-B945-9791AEE16BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD5A85B8-54BE-43E1-B945-9791AEE16BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD5A85B8-54BE-43E1-B945-9791AEE16BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF0E5CDE-D726-4753-9D61-D9E869F57B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF0E5CDE-D726-4753-9D61-D9E869F57B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF0E5CDE-D726-4753-9D61-D9E869F57B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF0E5CDE-D726-4753-9D61-D9E869F57B66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D6F5108-2080-4191-816E-FA1B497AE100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D6F5108-2080-4191-816E-FA1B497AE100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D6F5108-2080-4191-816E-FA1B497AE100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D6F5108-2080-4191-816E-FA1B497AE100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3684FE6-90D3-4812-948B-99B85FD067B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3684FE6-90D3-4812-948B-99B85FD067B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3684FE6-90D3-4812-948B-99B85FD067B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3684FE6-90D3-4812-948B-99B85FD067B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02337E96-32C5-40B7-B0C3-972810D9C2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02337E96-32C5-40B7-B0C3-972810D9C2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02337E96-32C5-40B7-B0C3-972810D9C2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02337E96-32C5-40B7-B0C3-972810D9C2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A0919B-B171-479A-ABC0-4FC42E8D83BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A0919B-B171-479A-ABC0-4FC42E8D83BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A0919B-B171-479A-ABC0-4FC42E8D83BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A0919B-B171-479A-ABC0-4FC42E8D83BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE5C29F-A284-4D37-A0B8-986AFFC56171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE5C29F-A284-4D37-A0B8-986AFFC56171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE5C29F-A284-4D37-A0B8-986AFFC56171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE5C29F-A284-4D37-A0B8-986AFFC56171}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{947DD0B0-3B32-4746-9D92-9FC661EAEDFF} = {2ACC9A7A-2797-471C-BE9F-0CC26335846E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DBDF9F3-7E0F-4EA8-B1C6-E75F8CBB5E69}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,193 @@
+<div class="container">
+    <tabset class="m-2">
+        <tab heading="Grade and APR" >
+    <form name="form" *ngIf="!updateform" (ngSubmit)="f.form.valid && add()" #f="ngForm" novalidate>
+        <div class="row mt-5 align-items-center">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="ContactName">Score</label>
+                            <select class="form-select" name="scoreId" [(ngModel)]="f1.scoreId" (change)="check()">
+                                <option value="-1">Select Score</option>
+                                <option *ngFor="let r of row_id" [value]=r.id>{{r.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="ContactName">Score</label>
+                            <select class="form-select" name="incomeId" [(ngModel)]="f1.incomeId" (change)="check()">
+                                <option value="-1">Select Income</option>
+                                <option *ngFor="let c of col_id" [value]=c.id>{{c.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="ContactName">APR(%)</label>
+                            <input type="text" name="apr" class="form-control" placeholder="Enter APR"
+                                (input)="f1.apr = number($event)" [(ngModel)]="f1.apr" #apr="ngModel" required
+                                [ngClass]="{ 'is-invalid': f.submitted && apr.invalid }">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="ContactName">Grade</label>
+                            <select class="form-select" name="gradeValue" [(ngModel)]="f1.gradeValue">
+                                <option *ngFor="let a of a_z" [value]=a>{{a}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <form name="form" *ngIf="updateform" (ngSubmit)="f.form.valid && update()" #f="ngForm" novalidate>
+                <div class="row mt-5 align-items-center">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="ContactName">Score</label>
+                                    <select class="form-select" name="scoreId" [(ngModel)]="f1.scoreId" (change)="check()">
+                                        <option value="-1">Select Score</option>
+                                        <option *ngFor="let r of row_id" [value]=r.id>{{r.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="ContactName">Score</label>
+                                    <select class="form-select" name="incomeId" [(ngModel)]="f1.incomeId" (change)="check()">
+                                        <option value="-1">Select Income</option>
+                                        <option *ngFor="let c of col_id" [value]=c.id>{{c.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="ContactName">APR</label>
+                                    <input type="text" name="apr" class="form-control" placeholder="Enter APR"
+                                        (input)="f1.apr = number($event)" [(ngModel)]="f1.apr" #apr="ngModel" required
+                                        [ngClass]="{ 'is-invalid': f.submitted && apr.invalid }">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="ContactName">Grade</label>
+                                    <select class="form-select" name="gradeValue" [(ngModel)]="f1.gradeValue">
+                                        <option *ngFor="let a of a_z" [value]=a>{{a}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">UPDATE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+    
+    <br>
+    <hr>
+    <br>
+
+    <div class="row">
+        <div class="col-6">
+            <table class="text-center table">
+                <tr>
+                    <td rowspan="2" style="background-color: #00c200;">
+                        Vantage Score Bin
+                    </td>
+                    <td [attr.colspan]="col_id.length" style="background-color: #00c200;">
+                        Monthly Income Bin
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="let c of col_id; let i = index;" style="background-color: #00c200;">
+                        {{a_z[i]}}: {{c.value}}
+                    </td>
+                </tr>
+                <tr *ngFor="let r of row_id; let i=index;">
+                    <td>
+                        {{a_z[i]}}: {{r.value}}
+                    </td>
+                    <td *ngFor="let c of col_id;">
+                        <section *ngFor="let d of data;">
+                            <section *ngIf="r.id==d.scoreId && c.id==d.incomeId"  [ngStyle]="{'background-color':color[d.gradeValue.toLowerCase()]}">
+                                {{d.gradeValue}}
+                            </section>
+                        </section>
+                    </td>
+                    <!-- <td *ngFor="let c of col_id; let i = index;" [class.select]="selectId == rows[r][c]['index']"
+                        (click)="selectId = rows[r][c]['index'] == selectId ? -1 : rows[r][c]['index'];"
+                        [ngStyle]="{'background-color':color[rows[r][c]['gradeValue'].toLowerCase()] }">
+                        {{rows[r][c]['gradeValue']}}
+                    </td> -->
+                </tr>
+            </table>
+        </div>
+        <div class="col-6">
+            <table class="text-center table">
+                <tr>
+                    <td rowspan="2" style="background-color: #00c200;">
+                        Vantage Score Bin
+                    </td>
+                    <td [attr.colspan]="col_id.length" style="background-color: #00c200;">
+                        Monthly Income Bin
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="let c of col_id; let i = index;" style="background-color: #00c200;">
+                        {{a_z[i]}}: {{c.value}}
+                    </td>
+                </tr>
+                <tr *ngFor="let r of row_id; let i = index;">
+                    <td>
+                        {{a_z[i]}}: {{r.value}}
+                    </td>
+                    <td *ngFor="let c of col_id;">
+                        <section *ngFor="let d of data;">
+                            <section *ngIf="r.id==d.scoreId && c.id==d.incomeId"  [ngStyle]="{'background-color':color[d.gradeValue.toLowerCase()]}">
+                                {{d.apr}}%
+                            </section>
+                        </section>
+                    </td>
+                    <!-- <td *ngFor="let c of col_id; let i = index;" [class.select]="selectId == rows[r][c]['index']"
+                        (click)="selectId = rows[r][c]['index'] == selectId ? -1 : rows[r][c]['index'];"
+                        [ngStyle]="{'background-color':color[rows[r][c]['gradeValue'].toLowerCase()] }">
+                        {{rows[r][c]['apr']}}<span *ngIf="rows[r][c]['apr'].toString().length>0">%</span>
+                    </td> -->
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    
+
+   
+
+</tab>
+<tab heading="Offers and Terms" >
+    
+</tab>
+</tabset>
+</div>
+
+<ng-template #messagebox>
+    <div class="modal-body text-center">
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <p class="headtext">Message</p>
+      <p *ngFor="let m of message">{{ m }}</p>
+    </div>
+  </ng-template>

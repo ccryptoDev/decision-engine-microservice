@@ -1,0 +1,181 @@
+<div class="container">
+    <tabset class="m-2">
+        <tab heading="Grade and APR" >
+            <form name="form" (ngSubmit)="f.form.valid && addscore()" #f="ngForm" novalidate>
+                <div class="row mt-5 align-items-center">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="ContactName">From Score</label>
+                                    <input type="text" name="fromScore" class="form-control" placeholder="Enter From Score"
+                                        (input)="f1.fromScore = number($event)" [(ngModel)]="f1.fromScore" #fromScore="ngModel"
+                                        required [ngClass]="{ 'is-invalid': f.submitted && fromScore.invalid }">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="ContactName">To Score</label>
+                                    <input type="text" name="toScore" class="form-control" placeholder="Enter To Score"
+                                        (input)="f1.toScore = number($event)" [(ngModel)]="f1.toScore" #toScore="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && toScore.invalid }">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">ADD</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+        
+        
+            
+         
+            <hr>
+        
+        
+        
+            <form name="form" (ngSubmit)="fi.form.valid && addincome()" #fi="ngForm" novalidate>
+                <div class="row align-items-center">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="ContactName">Min Income</label>
+                                    <input type="text" name="minIncome" class="form-control" placeholder="Enter From Income"
+                                        (input)="f1.minIncome = number($event)" [(ngModel)]="f1.minIncome" #minIncome="ngModel"
+                                        required [ngClass]="{ 'is-invalid': fi.submitted && minIncome.invalid }">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="ContactName">Max Income</label>
+                                    <input type="text" name="maxIncome" class="form-control" placeholder="Enter To Income"
+                                        (input)="f1.maxIncome = number($event)" [(ngModel)]="f1.maxIncome" #maxIncome="ngModel"
+                                        required [ngClass]="{ 'is-invalid': fi.submitted && maxIncome.invalid }">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">ADD</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+        
+        
+            
+            <br>
+            <hr>
+            <br>
+        
+        
+            <div class="row">
+                <div class="col-5">
+                <form name="form" (ngSubmit)="fes.form.valid && updatesocre()" #fes="ngForm" novalidate>
+                
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Form Score</th>
+                            <th scope="col">To Score</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            
+                          <tr *ngFor="let d of scores; let i = index;">
+                            <th scope="row">{{i+1}}</th>
+                            
+                            <td *ngIf="d.id!=scoreeditid">{{d.fromScore}}</td>
+                            <td *ngIf="d.id!=scoreeditid">{{d.toScore}}</td>
+                            <td *ngIf="d.id!=scoreeditid">
+                                <button type="button" class="btn btn-success" (click)="scoreedit(d)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                &nbsp;
+                                <button type="button" class="btn btn-danger" (click)="scoredelete(d)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                            <td *ngIf="d.id==scoreeditid">
+                                <input type="text" name="fromScore" class="form-control" placeholder="Enter From Score"
+                                        (input)="f2.fromScore = number($event)" [(ngModel)]="f2.fromScore" #fromScore="ngModel"
+                                        required [ngClass]="{ 'is-invalid': fes.submitted && fromScore.invalid }">
+                            </td>
+                            <td *ngIf="d.id==scoreeditid">
+                                <input type="text" name="toScore" class="form-control" placeholder="Enter To Score"
+                                        (input)="f2.toScore = number($event)" [(ngModel)]="f2.toScore" #toScore="ngModel" required [ngClass]="{ 'is-invalid': fes.submitted && toScore.invalid }">
+                            </td>
+                            <td *ngIf="d.id==scoreeditid">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                &nbsp;
+                                <button type="button" class="btn btn-danger" (click)="scoreeditcolse()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+                            </td>
+                          </tr>
+                       
+                        </tbody>
+                      </table>
+                
+            </form>
+        </div>
+                <div class="col-2">
+        
+                </div>
+                <div class="col-5">
+                    <form name="form" (ngSubmit)="fei.form.valid && updateincome()" #fei="ngForm" novalidate>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Min Income</th>
+                            <th scope="col">Max Income</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let d of incomes; let i = index;">
+                            <th scope="row">{{i+1}}</th>
+                            <td *ngIf="d.id!=incomeeditid">{{d.minIncome}}</td>
+                            <td *ngIf="d.id!=incomeeditid">{{d.maxIncome}}</td>
+                            <td *ngIf="d.id!=incomeeditid">
+                                <button type="button" class="btn btn-success" (click)="incomeedit(d)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                &nbsp;
+                                <button type="button" class="btn btn-danger" (click)="incomedelete(d)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                            <td *ngIf="d.id==incomeeditid">
+                                <input type="text" name="minIncome" class="form-control" placeholder="Enter From Income"
+                                        (input)="f2.minIncome = number($event)" [(ngModel)]="f2.minIncome" #minIncome="ngModel"
+                                        required [ngClass]="{ 'is-invalid': fei.submitted && minIncome.invalid }">
+                            </td>
+                            <td *ngIf="d.id==incomeeditid">
+                                <input type="text" name="maxIncome" class="form-control" placeholder="Enter To Income"
+                                (input)="f2.maxIncome = number($event)" [(ngModel)]="f2.maxIncome" #maxIncome="ngModel"
+                                required [ngClass]="{ 'is-invalid': fei.submitted && maxIncome.invalid }">
+                            </td>
+                            <td *ngIf="d.id==incomeeditid">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                &nbsp;
+                                <button type="button" class="btn btn-danger" (click)="incomeeditcolse()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                </div>
+            </div>
+        </tab>
+        <tab heading="Offers and Terms" >
+            
+        </tab>
+    </tabset>
+</div>
+
+
+<ng-template #messagebox>
+    <div class="modal-body text-center">
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="close()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <p class="headtext">Message</p>
+      <p *ngFor="let m of message">{{ m }}</p>
+    </div>
+  </ng-template>
